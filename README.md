@@ -108,7 +108,7 @@ We can also use a _central_ finite difference to define the acceleration at time
 $t$:
 
 $$
-\a\^t = 
+\a_i\^t = 
 \ddot{\p}\^t\_i = 
 \frac{∂²\p\_i(t)}{∂t²} = 
 \frac{\dot{\p}\^{t+∆t}\_i - \dot{\p}\^{t}\_i}{∆t} =
@@ -124,7 +124,7 @@ variables.
 
 ### Time integration as energy optimization
 
-In the equation $\f = m \a$, the acceleration term $\a$ depend _linearly_ on the
+In the equation $\f = m \a$, the acceleration term $\a$ depends _linearly_ on the
 unknowns $\p^{t+∆t}$. Unfortunately, even for a simple spring the forces $\f =
 ∂V/∂\p^{t+∆t}$ depend _non-linearly_ on $\p^{t+∆t}$. This means we have a
 _non-linear_ system of equations, which can be tricky to satisfy directly.
@@ -173,7 +173,7 @@ Method](https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization) (too
 complicated for this assignment).
 
 In a relatively recent SIGGRAPH paper ["Fast Simulation of Mass-Spring
-Systems"](),
+Systems"](http://graphics.berkeley.edu/papers/Liu-FSM-2013-11/Liu-FSM-2013-11.pdf),
 Tiantian Liu et al. made a neat observation that makes designing an algorithm to
 minimize $E$ quite simple and fast. For each spring $ij$, they observe that the
 non-linear energy can be written as a small optimization problem:
@@ -206,7 +206,7 @@ $$
 }_{\tilde{E}(\p)}.
 $$ 
 
-The modified energy $\tilde{E}(\p)$ is _quadratic with respect to the unkowns
+The modified energy $\tilde{E}(\p)$ is _quadratic_ with respect to the unknowns
 $\p$, therefore the solution is found when we set the first derivative equal to
 zero: 
 
@@ -309,7 +309,7 @@ $$\tilde{E}(\p) = \\\\
 - \tr{\p^\top(k \A^\top \d + \frac{1}{∆t²}\M (2\p\^t - \p\^{t-∆t}) + \f^\text{ext})} + \text{ constants }.
 $$
 
-> **Question:** Why do we not both to write out the terms that are constant with
+> **Question:** Why do we not bother to write out the terms that are constant with
 > respect to $\p$?
 
 We can clean this up by introducing a few auxiliary matrices:
@@ -513,8 +513,7 @@ We can add these quadratic and linear coefficients to $\Q$ and $\b$ above corres
 - `igl::diag`
 - `igl::sparse`
 - `igl::massmatrix`
-- `igl::*`
-- `.sparseView()`
+- `.sparseView()` on `Eigen::MatrixXd` types
 
 Write your dense code first. This will be simpler to debug.
 

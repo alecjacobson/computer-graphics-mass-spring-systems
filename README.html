@@ -91,7 +91,7 @@ padding: 45px;
 <blockquote>
 <p><strong>To get started:</strong> Clone this repository using</p>
 
-<pre><code>git clone --recursive http://github.com/alecjacobson/computer-graphics-mass-spring.git
+<pre><code>git clone --recursive http://github.com/alecjacobson/computer-graphics-mass-spring-systems.git
 </code></pre>
 </blockquote>
 
@@ -202,7 +202,7 @@ where <span class="math">\(\p^{t-∆t}_i ∈ \R^3\)</span> is the position at th
 <span class="math">\(t\)</span>:</p>
 
 <p>$$
-\a^t =
+\a_i^t =
 \ddot{\p}^t_i =
 \frac{∂²\p_i(t)}{∂t²} =
 \frac{\dot{\p}^{t+∆t}_i - \dot{\p}^{t}_i}{∆t} =
@@ -218,7 +218,7 @@ variables.</p>
 
 <h3 id="timeintegrationasenergyoptimization">Time integration as energy optimization</h3>
 
-<p>In the equation <span class="math">\(\f = m \a\)</span>, the acceleration term <span class="math">\(\a\)</span> depend <em>linearly</em> on the
+<p>In the equation <span class="math">\(\f = m \a\)</span>, the acceleration term <span class="math">\(\a\)</span> depends <em>linearly</em> on the
 unknowns <span class="math">\(\p^{t+∆t}\)</span>. Unfortunately, even for a simple spring the forces <span class="math">\(\f =
 ∂V/∂\p^{t+∆t}\)</span> depend <em>non-linearly</em> on <span class="math">\(\p^{t+∆t}\)</span>. This means we have a
 <em>non-linear</em> system of equations, which can be tricky to satisfy directly.</p>
@@ -267,7 +267,7 @@ method</a>, or <a href="https://en.wikipedia.org/wiki/Newton%27s_method_in_optim
 Method</a> (too
 complicated for this assignment).</p>
 
-<p>In a relatively recent SIGGRAPH paper <a href="">&#8220;Fast Simulation of Mass-Spring
+<p>In a relatively recent SIGGRAPH paper <a href="http://graphics.berkeley.edu/papers/Liu-FSM-2013-11/Liu-FSM-2013-11.pdf">&#8220;Fast Simulation of Mass-Spring
 Systems&#8221;</a>,
 Tiantian Liu et al. made a neat observation that makes designing an algorithm to
 minimize <span class="math">\(E\)</span> quite simple and fast. For each spring <span class="math">\(ij\)</span>, they observe that the
@@ -302,7 +302,7 @@ find the optimal solution by solving the <em>quadratic</em> optimization problem
 }_{\tilde{E}(\p)}.
 $$ </p>
 
-<p>The modified energy <span class="math">\(\tilde{E}(\p)\)</span> is _quadratic with respect to the unkowns
+<p>The modified energy <span class="math">\(\tilde{E}(\p)\)</span> is <em>quadratic</em> with respect to the unknowns
 <span class="math">\(\p\)</span>, therefore the solution is found when we set the first derivative equal to
 zero: </p>
 
@@ -407,7 +407,7 @@ in matrix form:</p>
 $$</p>
 
 <blockquote>
-<p><strong>Question:</strong> Why do we not both to write out the terms that are constant with
+<p><strong>Question:</strong> Why do we not bother to write out the terms that are constant with
 respect to <span class="math">\(\p\)</span>?</p>
 </blockquote>
 
@@ -615,8 +615,7 @@ $$</p>
 <li><code>igl::diag</code></li>
 <li><code>igl::sparse</code></li>
 <li><code>igl::massmatrix</code></li>
-<li><code>igl::*</code></li>
-<li><code>.sparseView()</code></li>
+<li><code>.sparseView()</code> on <code>Eigen::MatrixXd</code> types</li>
 </ul>
 
 <p>Write your dense code first. This will be simpler to debug.</p>
