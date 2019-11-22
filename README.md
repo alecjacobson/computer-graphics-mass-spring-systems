@@ -114,7 +114,7 @@ $$
 \frac{\dot{\p}\^{t+∆t}\_i - \dot{\p}\^{t}\_i}{∆t} =
 \frac{\p\^{t+∆t}\_i - \p\^{t}\_i}{∆t}
 -\frac{\p\^t\_i - \p\^{t-∆t}\_i}{∆t}=
-\frac{\p\^{t+∆t}\_i - 2 \p\^{t}\_i - \p\^{t-∆t}}{∆t²}.
+\frac{\p\^{t+∆t}\_i - 2 \p\^{t}\_i + \p\^{t-∆t}}{∆t²}.
 $$
 
 This expression mentions our _unknown_ variables $\p^{t+∆t}_i$ for the first
