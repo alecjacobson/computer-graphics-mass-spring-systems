@@ -5,7 +5,7 @@
 //
 // Inputs: 
 //   n  number of vertices (#V)
-//   E  #E by 3 list of edge indices into rows of V
+//   E  #E by 2 list of edge indices into rows of V
 // Outputs:
 //   A  #E by n signed incidence matrix
 void signed_incidence_matrix_dense(
