@@ -5,7 +5,7 @@
 //
 // Inputs: 
 //   V  #V by 3 list of **rest** vertex positions
-//   E  #E by 3 list of edge indices into rows of V
+//   E  #E by 2 list of edge indices into rows of V
 //   k  spring stiffness
 //   b  #b list of indices of fixed vertices as indices into rows of V
 //   delta_t  time step in seconds
