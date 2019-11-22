@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link type="text/css" rel="stylesheet" href="css/github-markdown.css"/>
+<link rel="stylesheet" href="css/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+</head>
+<body>
+
+<pre><code>@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
+</code></pre>
+
+<p></style>
+<article class="markdown-body"></p>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<div style="display:none">
+<span class="math">\(\newcommand{\A}{\mat{A}}\)</span>
+<span class="math">\(\newcommand{\B}{\mat{B}}\)</span>
+<span class="math">\(\newcommand{\C}{\mat{C}}\)</span>
+<span class="math">\(\newcommand{\D}{\mat{D}}\)</span>
+<span class="math">\(\newcommand{\E}{\mat{E}}\)</span>
+<span class="math">\(\newcommand{\F}{\mat{F}}\)</span>
+<span class="math">\(\newcommand{\G}{\mat{G}}\)</span>
+<span class="math">\(\newcommand{\H}{\mat{H}}\)</span>
+<span class="math">\(\newcommand{\I}{\mat{I}}\)</span>
+<span class="math">\(\newcommand{\J}{\mat{J}}\)</span>
+<span class="math">\(\newcommand{\K}{\mat{K}}\)</span>
+<span class="math">\(\newcommand{\L}{\mat{L}}\)</span>
+<span class="math">\(\newcommand{\M}{\mat{M}}\)</span>
+<span class="math">\(\newcommand{\N}{\mat{N}}\)</span>
+<span class="math">\(\newcommand{\One}{\mathbf{1}}\)</span>
+<span class="math">\(\newcommand{\P}{\mat{P}}\)</span>
+<span class="math">\(\newcommand{\Q}{\mat{Q}}\)</span>
+<span class="math">\(\newcommand{\Rot}{\mat{R}}\)</span>
+<span class="math">\(\newcommand{\R}{\mathbb{R}}\)</span>
+<span class="math">\(\newcommand{\S}{\mathcal{S}}\)</span>
+<span class="math">\(\newcommand{\T}{\mat{T}}\)</span>
+<span class="math">\(\newcommand{\U}{\mat{U}}\)</span>
+<span class="math">\(\newcommand{\V}{\mat{V}}\)</span>
+<span class="math">\(\newcommand{\W}{\mat{W}}\)</span>
+<span class="math">\(\newcommand{\X}{\mat{X}}\)</span>
+<span class="math">\(\newcommand{\Y}{\mat{Y}}\)</span>
+<span class="math">\(\newcommand{\argmax}{\mathop{\text{argmax}}}\)</span>
+<span class="math">\(\newcommand{\argmin}{\mathop{\text{argmin}}}\)</span>
+<span class="math">\(\newcommand{\a}{\vec{a}}\)</span>
+<span class="math">\(\newcommand{\b}{\vec{b}}\)</span>
+<span class="math">\(\newcommand{\c}{\vec{c}}\)</span>
+<span class="math">\(\newcommand{\d}{\vec{d}}\)</span>
+<span class="math">\(\newcommand{\e}{\vec{e}}\)</span>
+<span class="math">\(\newcommand{\f}{\vec{f}}\)</span>
+<span class="math">\(\newcommand{\g}{\vec{g}}\)</span>
+<span class="math">\(\newcommand{\mat}[1]{\mathbf{#1}}\)</span>
+<span class="math">\(\newcommand{\min}{\mathop{\text{min}}}\)</span>
+<span class="math">\(\newcommand{\m}{\vec{m}}\)</span>
+<span class="math">\(\newcommand{\n}{\vec{n}}\)</span>
+<span class="math">\(\newcommand{\p}{\vec{p}}\)</span>
+<span class="math">\(\newcommand{\q}{\vec{q}}\)</span>
+<span class="math">\(\newcommand{\r}{\vec{r}}\)</span>
+<span class="math">\(\newcommand{\transpose}{{\mathsf T}}\)</span>
+<span class="math">\(\newcommand{\tr}[1]{\mathop{\text{tr}}{\left(#1\right)}}\)</span>
+<span class="math">\(\newcommand{\s}{\vec{s}}\)</span>
+<span class="math">\(\newcommand{\t}{\vec{t}}\)</span>
+<span class="math">\(\newcommand{\u}{\vec{u}}\)</span>
+<span class="math">\(\newcommand{\vec}[1]{\mathbf{#1}}\)</span>
+<span class="math">\(\newcommand{\x}{\vec{x}}\)</span>
+<span class="math">\(\newcommand{\y}{\vec{y}}\)</span>
+<span class="math">\(\newcommand{\z}{\vec{z}}\)</span>
+<span class="math">\(\newcommand{\0}{\vec{0}}\)</span>
+<span class="math">\(\renewcommand{\v}{\vec{v}}\)</span>
+<!-- https://github.com/mathjax/MathJax/issues/1766 -->
+<span class="math">\(\renewcommand{\hat}[1]{\widehat{#1}}\)</span>
+</div>
+
+<h1 id="computergraphics–mass-springsystems">Computer Graphics – Mass-Spring Systems</h1>
+
+<blockquote>
+<p><strong>To get started:</strong> Clone this repository using</p>
+
+<pre><code>git clone --recursive http://github.com/alecjacobson/computer-graphics-mass-spring.git
+</code></pre>
+</blockquote>
+
+<h2 id="background">Background</h2>
+
+<h3 id="readchapter16.5offundamentalsofcomputergraphics4thedition.">Read Chapter 16.5 of <em>Fundamentals of Computer Graphics (4th Edition)</em>.</h3>
+
+<h3 id="readfastsimulationofmass-springsystems">Read <a href="http://graphics.berkeley.edu/papers/Liu-FSM-2013-11/Liu-FSM-2013-11.pdf">&#8220;Fast Simulation of Mass-Spring Systems&#8221; [Tiantian Liu et al. 2013]</a></h3>
+
+<h2 id="mass-springsystems">Mass-Spring Systems</h2>
+
+<p>In this assignment we&#8217;ll consider animating a deformable shape.</p>
+
+<p>We <em>model</em> the shape&#8217;s physical behavior by treating it as a network of <a href="https://en.wikipedia.org/wiki/Point_particle">point
+masses</a> and
+<a href="https://en.wikipedia.org/wiki/Effective_mass_(spring–mass_system)">springs</a>. We
+can think of our shape as a
+<a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a> where each
+vertex is a point mass and each edge is a spring.</p>
+
+<p>Given <em>initial conditions</em> (each point&#8217;s starting position and starting
+velocity, if any) we will create an animation following the laws of physics
+forward in time. In the real world, physics is deterministic: if we know the
+current state, we can be sure of what the next state will be (at least at the
+scales we&#8217;re considering). This will also be true of our physical simulation.</p>
+
+<p>The law that we start with is Newton&#8217;s second law, which states that the forces
+<span class="math">\(\f ∈ \R³\)</span> acting on a body must equal its mass <span class="math">\(m\)</span> times its acceleration
+<span class="math">\(\a∈\R³\)</span>:</p>
+
+<p>$$
+\f = m \a.
+$$</p>
+
+<p>Notice that <span class="math">\(\f\)</span> and <span class="math">\(\a\)</span> are vectors, each having a magnitude and a direction.
+We will build our computational simulation by asking for this equation to be
+true for each point mass in our network. The forces <span class="math">\(\f_i\)</span> acting on the <span class="math">\(i\)</span>-th point
+mass are simply the sum of forces coming from any incident spring edge <span class="math">\(ij\)</span> and
+any external force (such as gravity).</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Personification">Personifying</a> physical objects, we say
+that they are <em>at rest</em> when their potential energy is zero. When the object is
+<em>not at rest</em> then it exerts a force pushing it toward its rest state (<a href="https://en.wikipedia.org/wiki/Elasticity_(physics)">elastic
+force</a>), decreasing its
+potential energy as fast as possible. The force is the negative gradient of the potential
+energy.</p>
+
+<p>A simple spring is defined by its stiffness <span class="math">\(k>0\)</span> and <em>rest</em> length <span class="math">\(r_{ij} ∈ \R\)</span>.
+Its potential energy measures the squared difference of the current length and
+the rest length times the stiffness:</p>
+
+<p>$$
+V(\p_i,\p_j) = ½k( ‖\p_i - \p_j‖ - r_{ij} )^2.
+$$</p>
+
+<figure>
+<img src="images/potential-energy.png" alt="" />
+</figure>
+
+<p>The force exerted by the spring on each mass is the <a href="https://en.wikipedia.org/wiki/Partial_derivative">partial
+derivative</a> of the potential
+energy <span class="math">\(V\)</span> with respect to the corresponding mass position. For example, for
+<span class="math">\(\p_i\)</span> we have</p>
+
+<p>$$
+\f_{ij} = -\frac{∂V}{∂\p_i} ∈ \R^3.
+$$</p>
+
+<p>For now, we can postpone expanding <span class="math">\(∂V/∂\p_i\)</span>, and just recognize that it is a
+3D vector. </p>
+
+<p>Our problem is to determine <em>where</em> all of the mass will be after a small
+duration in time (<span class="math">\(∆t\)</span>). </p>
+
+<blockquote>
+<p><strong>Question:</strong> What is a reasonable choice for the value of <span class="math">\(∆t\)</span> ?</p>
+
+<p><strong>Hint:</strong> 🎞️ or 🖥️</p>
+</blockquote>
+
+<p>We&#8217;ll assume we know the current positions for each
+mass <span class="math">\(\p^t_i∈\R^3\)</span> at the current time (<span class="math">\(t\)</span>) and the current velocities
+<span class="math">\(\dot{\p}^t_i = ∂\p_i(t)/∂t ∈\R^3\)</span>. When <span class="math">\(t=0\)</span> then we call these the <a href="https://en.wikipedia.org/wiki/Initial_condition">initial
+conditions</a> of the entire
+simulation. For <span class="math">\(t≥0\)</span>, we can still think of these values as the initial
+conditions for the remaining time.</p>
+
+<p>In the real world, the trajectory of an object follows a continuous curve as a
+function of time. In our simulation, we only need to know the position of each
+pass at <a href="https://en.wikipedia.org/wiki/Discrete_time_and_continuous_time">discrete moments in
+time</a>. We use
+this to build discrete approximation of the time derivatives (velocities and
+accelerations) that we encounter. Immediately, we can replace the current
+velocties <span class="math">\(\dot{\p}^t_i\)</span> with a <em>backward</em> <a href="https://en.wikipedia.org/wiki/Finite_difference">finite
+difference</a> of the positions
+over the small time step:</p>
+
+<p>$$
+\dot{\p}^t_i = \frac{\p^t_i - \p^{t-∆t}_i}{∆t}
+$$
+where <span class="math">\(\p^{t-∆t}_i ∈ \R^3\)</span> is the position at the <em>previous</em> time.</p>
+
+<p>We can also use a <em>central</em> finite difference to define the acceleration at time
+<span class="math">\(t\)</span>:</p>
+
+<p>$$
+\a^t =
+\ddot{\p}^t_i =
+\frac{∂²\p_i(t)}{∂t²} =
+\frac{\dot{\p}^{t+∆t}_i - \dot{\p}^{t}_i}{∆t} =
+\frac{\p^{t+∆t}_i - \p^{t}_i}{∆t}
+-\frac{\p^t_i - \p^{t-∆t}_i}{∆t}=
+\frac{\p^{t+∆t}_i - 2 \p^{t}_i - \p^{t-∆t}}{∆t²}.
+$$</p>
+
+<p>This expression mentions our <em>unknown</em> variables <span class="math">\(\p^{t+∆t}_i\)</span> for the first
+time. We&#8217;ll soon that based on definition of the potential spring energy above
+and the acceleration here we can <em>solve</em> for the values of these unknown
+variables.</p>
+
+<h3 id="timeintegrationasenergyoptimization">Time integration as energy optimization</h3>
+
+<p>In the equation <span class="math">\(\f = m \a\)</span>, the acceleration term <span class="math">\(\a\)</span> depend <em>linearly</em> on the
+unknowns <span class="math">\(\p^{t+∆t}\)</span>. Unfortunately, even for a simple spring the forces <span class="math">\(\f =
+∂V/∂\p^{t+∆t}\)</span> depend <em>non-linearly</em> on <span class="math">\(\p^{t+∆t}\)</span>. This means we have a
+<em>non-linear</em> system of equations, which can be tricky to satisfy directly.</p>
+<!--
+If we expanded this as an expression, we
+might write:
+$$
+\frac{∂ V(\p^{t+∆t})}{∂ \p} = 
+\M \left(
+\frac{\p\^{t+∆t}\_i - 2 \p\^{t}\_i + \p\^{t-∆t}}{∆t²}.
+$$
+-->
+
+<blockquote>
+<p><strong>Question:</strong> We&#8217;ve <em>chosen</em> to define <span class="math">\(\f\)</span> as the forces that implicitly
+depend on the unknown positions <span class="math">\(\p^{t+∆t}\)</span> at the end of the
+time step <span class="math">\(t+∆t\)</span>. What would happen if we defined the forces to explicitly
+depend on the (known) current positions <span class="math">\(\p^t\)</span>?</p>
+</blockquote>
+
+<p>An alternative is to view physics simulation as an optimization problem. We
+will define an energy that will be minimized by the value of <span class="math">\(\p^{t+∆t}\)</span> that
+satisfies <span class="math">\(\f = m \a\)</span>. The minimizer <span class="math">\(\p\)</span> of some function <span class="math">\(E(x)\)</span> will satisfy
+<span class="math">\(∂E/∂\p = 0\)</span>. So we construct an energy <span class="math">\(E\)</span> such that <span class="math">\(∂E/∂\p = \f - m\a\)</span>:</p>
+
+<p>$$
+\p^{t+∆t} = \argmin_\p
+\underbrace{
+\left(\sum\limits_{ij} ½k( ‖\p_i-\p_j‖ - r_{ij})^2\right) -
+∆t^2 \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i + \p_i^{t-∆t}}{∆t²}\right)^2 \right) -
+\left(\sum\limits_i \p_i^\top \f^\text{ext}_i \right)
+}_{E(\p)}
+$$ </p>
+
+<p>Keen observers will identify that the first term is potential energy and the
+second term resembles <a href="https://en.wikipedia.org/wiki/Kinetic_energy">kinetic
+energy</a>. Intuitively, we can see
+the first term as trying to return the spring to rest length (elasticity) and
+the second term as trying to keep masses <a href="https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion#Newton%27s_first_law">moving in the same
+direction</a>. </p>
+
+<p>Because of the <span class="math">\(‖\p_i-\p_j‖ - r_{ij}\)</span> term, minimizing <span class="math">\(E\)</span> is a non-linear
+optimization problem. The standard approach would be to apply <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient
+descent</a> (slow), <a href="https://en.wikipedia.org/wiki/Gauss–Newton_algorithm">Gauss-Newton
+method</a>, or <a href="https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization">Newton&#8217;s
+Method</a> (too
+complicated for this assignment).</p>
+
+<p>In a relatively recent SIGGRAPH paper <a href="">&#8220;Fast Simulation of Mass-Spring
+Systems&#8221;</a>,
+Tiantian Liu et al. made a neat observation that makes designing an algorithm to
+minimize <span class="math">\(E\)</span> quite simple and fast. For each spring <span class="math">\(ij\)</span>, they observe that the
+non-linear energy can be written as a small optimization problem:</p>
+
+<p>$$
+(‖\p_i - \p_j‖ - r_{ij})^2 = \min_{\d_{ij}∈\R^3,‖\d‖ = r_{ij}} ‖(\p_i - \p_j) - \d_{ij}‖^2.
+$$</p>
+
+<p>It may seem like we&#8217;ve just created extra work. We took a closed-form expression
+(left) and replaced it with an optimization problem (right). Yet this
+optimization problem is small (<span class="math">\(\d_{ij}\)</span> is a single 3D vector) and can be
+easily solved <em>independently</em> (and even in parallel) for each spring (i.e.,
+<span class="math">\(\d_{ij}\)</span> doesn&#8217;t depend on <span class="math">\(\d_{\ell k}\)</span> etc.). Reading the right-hand side in
+English it says, find the vector of length <span class="math">\(r_{ij}\)</span> that is as close as possible
+to the current spring vector <span class="math">\(\p_i - \p_j\)</span>. </p>
+
+<figure>
+<img src="images/dij-rij-closest-vector.png" alt="" />
+</figure>
+
+<p>Now, suppose we somehow <em>knew already</em> the vector <span class="math">\(\d_{ij}\)</span> corresponding to the
+<em>unknown</em> optimal solution <span class="math">\(\p^{t+∆t}\)</span>, then treating <span class="math">\(\d_{ij}\)</span> as a <em>constant</em> we could
+find the optimal solution by solving the <em>quadratic</em> optimization problem:</p>
+
+<p>$$
+\p^{t+∆t} = \argmin_\p
+\underbrace{
+\left(\sum\limits_{ij} ½k‖(\p_i-\p_j) - \d_{ij}‖^2\right) -
+∆t^2 \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i + \p_i^{t-∆t}}{∆t²}\right)^2 \right) -
+\left(\sum\limits_i \p_i^\top \f^\text{ext}_i \right)
+}_{\tilde{E}(\p)}.
+$$ </p>
+
+<p>The modified energy <span class="math">\(\tilde{E}(\p)\)</span> is _quadratic with respect to the unkowns
+<span class="math">\(\p\)</span>, therefore the solution is found when we set the first derivative equal to
+zero: </p>
+
+<p>$$
+\frac{d\tilde{E}}{d\p} = 0.
+$$</p>
+
+<p>This leads to a straightforward &#8220;local-global&#8221; iterative algorithm:</p>
+
+<ul>
+<li>Step 1 (local): Given current values of <span class="math">\(\p\)</span> determine <span class="math">\(\d_{ij}\)</span> for each
+ spring.</li>
+<li>Step 2 (global): Given all <span class="math">\(\d_{ij}\)</span> vectors, find positions <span class="math">\(\p\)</span> that
+ minimize quadratic energy <span class="math">\(\tilde{E}\)</span>.</li>
+<li>Step 3: if &#8220;not satisfied&#8221;, go to Step 1.</li>
+</ul>
+
+<p>For the purposes of this assignment we will assume that we&#8217;re &#8220;satisfied&#8221; after
+a fixed number of iterations (e.g., 50). More advanced <em>stopping criteria</em> could
+(should) be employed in general.</p>
+
+<h3 id="matrices">Matrices</h3>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Subtext">subtext</a> of this assignment is
+understanding the computational aspects of large matrices. In the algorithm
+above, Step 1 is easy and relies on &#8220;local&#8221; information for each spring.</p>
+
+<p>Step 2 on the otherhand involves all springs simultaneously.
+<a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">Matrices</a> are our
+convenient notation for representing both the <a href="https://en.wikipedia.org/wiki/Linear_operator">linear
+operators</a> (e.g., in the equation
+<span class="math">\(\frac{d\tilde{E}}{d\p} = 0\)</span>) and the <a href="https://en.wikipedia.org/wiki/Quadratic_form">quadratic
+forms</a> (e.g., in the energy
+<span class="math">\(\tilde{E}\)</span>).</p>
+
+<p>Let&#8217;s begin by being precise about some notation. We will stack up all of the
+<span class="math">\(n\)</span> unknown mass positions <span class="math">\(\p_i ∈ \R^3\)</span> as the rows of a matrix <span class="math">\(\p∈\R^{n×3}\)</span>.
+We can do the same for the <em>known</em> previous time steps&#8217; positions
+<span class="math">\(\p^{t},\p^{t-∆t}∈\R^{n×3}\)</span>.</p>
+
+<p>We can then express the inertial term using matrices:
+$$
+∆t^2 \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i - \p_i^{t-∆t}}{∆t²}\right)^2 \right) = \\
+\frac{1}{∆t^2} \left(\sum\limits_i
+\left(\p_i - 2 \p^{t}_i - \p_i^{t-∆t}\right)^\top
+m_i
+\left(\p_i - 2 \p^{t}_i - \p_i^{t-∆t}\right)
+\right) = \\
+\frac{1}{∆t^2}
+\tr{
+\left(\p - 2\p^{t} + \p^{t-∆t}\right)^\top \M \left(\p - 2\p^{t} + \p^{t-∆t}\right)
+},
+$$</p>
+
+<p>where <span class="math">\(\tr{\X}\)</span> computes the <a href="https://en.wikipedia.org/wiki/Trace_(linear_algebra)">trace</a> of <span class="math">\(\X\)</span> (sums up the diagonal entries: <span class="math">\(\X_{11}+\X_{22}+\dots\)</span>).</p>
+
+<p>and the entries of the square matrix <span class="math">\(\M∈\R^{n×n}\)</span> are set to </p>
+
+<p><span class="math">\[\M_{ij} = \begin{cases} m_{i} & \text{ if $i=j$ } \\\\
+0 & \text{ otherwise.} \end{cases}.\]</span></p>
+
+<p>The potential energy term can be similarly written with matrices. We&#8217;ll start by
+introducing the <em>signed incidence</em> matrix of our mass-psring network of <span class="math">\(n\)</span>
+vertices and <span class="math">\(m\)</span> edges <span class="math">\(\A∈\R^{m × n}\)</span>. The <em>rows</em> of <span class="math">\(\A\)</span> correspond to an arbitrary
+(but fixed) ordering of the edges in the network. In a mass-spring network, the
+edges are un-oriented in the sense that the spring acts symmetrically on its
+vertices. For convenience, we&#8217;ll pick an orientation for edge anyway. For the
+<span class="math">\(e\)</span>-th edge <span class="math">\(ij\)</span>, we should be sure to use the same orientation when computing
+<span class="math">\(\d_{ij}\)</span> and for the following entries of <span class="math">\(\A\)</span>. So, for the <span class="math">\(e\)</span>-th row of <span class="math">\(\A\)</span>
+corresponding to edge connecting vertices <span class="math">\(i\)</span> and <span class="math">\(j\)</span> we&#8217;ll assign values:</p>
+
+<p><span class="math">\[\A_{ek} = \begin{cases} +1 & \text{ if $k=i$ } \\\\
+-1 & \text{ else if $k==j$ } \\\\
+0 & \text{ otherwise.} \end{cases}\]</span></p>
+
+<p>Using this matrix <span class="math">\(\A\)</span> as a linear operator we can compute the spring vectors for
+each edge:</p>
+
+<p>$$
+\v = \A \p ↔ \v_{ij} = \p_i - \p_j.
+$$</p>
+
+<p>We can now write the modified potential energy of <span class="math">\(\tilde{E}\)</span> in matrix form:</p>
+
+<p>$$
+\left(\sum\limits_{ij} ½k‖(\p_i-\p_j) - \d_{ij}‖^2\right) = \\
+\frac{k}{2} \tr{(\A \p - \d)^\top (\A \p - \d)},
+$$
+where we stack the vector <span class="math">\(\d_{ij}\)</span> for each edge in the corresponding rows of <span class="math">\(\d∈\R^{m × 3}\)</span>.</p>
+
+<p>Combining our two matrix expressions together we can write <span class="math">\(\tilde{E}\)</span> entirely
+in matrix form:</p>
+
+<p>$$\tilde{E}(\p) = \\
+\frac{k}{2} \tr{(\A \p - \d)^\top (\A \p - \d)} +
+\tr{
+\left(\p - 2\p^{t} + \p^{t-∆t}\right)^\top \M \left(\p - 2\p^{t} + \p^{t-∆t}\right)
+}
+\tr{\p^\top \f^\text{ext}} = \\
+\frac{1}{2} \tr{ \p^\top (k \A^\top \A + \frac{1}{∆t²}\M) \p }
+- \tr{\p^\top(k \A^\top \d + \M (2\p^t - \p^{t-∆t}) + \f^\text{ext})} + \text{ constants }.
+$$</p>
+
+<blockquote>
+<p><strong>Question:</strong> Why do we not both to write out the terms that are constant with
+respect to <span class="math">\(\p\)</span>?</p>
+</blockquote>
+
+<p>We can clean this up by introducing a few auxiliary matrices:</p>
+
+<p>$$
+\Q := (k \A^\top \A + \frac{1}{∆t²}\M) ∈ \R^{n×n} \\
+\y := \frac{1}{∆t²}\M (2\p^t - \p^{t-∆t}) + \f^\text{ext} ∈ \R^{n×3} \\
+\b := k \A^\top \d + \y ∈ \R^{n×3}.
+$$</p>
+
+<p>Now our optimization problem is neatly written as:</p>
+
+<p>$$
+\p^{t+∆t} = \argmin_\p ½ \tr{ \p^\top \Q \p } - \tr{\p^\top \b}.
+$$</p>
+
+<blockquote>
+<p><strong>Recall:</strong> The trace operator behaves very nicely when differentiating.</p>
+
+<p><span class="math">\[\frac{∂ \tr{\x^\top \y}}{∂ \x} = \y\]</span>
+and </p>
+
+<p><span class="math">\[\frac{∂ ½\tr{\x^\top \Y \x}}{∂ \x} = \Y \x\]</span></p>
+</blockquote>
+
+<p>Taking a derivative with respect to <span class="math">\(\p\)</span> and setting the expression to zero
+reveals the minimizer of this quadratic energy:</p>
+
+<p>$$
+\Q \p^{t+∆t} = \b
+$$</p>
+
+<p>Since <span class="math">\(\Q\)</span> is a square invertible matrix we can <em>solve</em> this system, which we
+often write as:</p>
+
+<p>$$
+\p^{t+∆t} = \Q^{&#8211;1} \b.
+$$</p>
+
+<h4 id="solvingastheactionofmultiplyingbyamatrixsinverse">Solving as the <em>action</em> of multiplying by a matrix&#8217;s inverse</h4>
+
+<p>From an algorithmic point of view the notation <span class="math">\(\p = \Q^{-1} \b\)</span> is misleading. It
+might suggest first constructing <code>Qinv = inverse(Q)</code> and then conducting matrix
+multiply <code>p = Qinv * b</code>. This is almost always a bad idea. Constructing <code>Qinv</code>
+be very expensive <span class="math">\(O(n³)\)</span> and numerically unstable.</p>
+
+<p>Instead, we should think of the <em>action</em> of multiplying by the inverse of a
+matrix as a single &#8220;solve&#8221; operation: <code>p = solve(Q,b)</code>. Some programming
+languages (such as MATLAB) indicate using operator overloading &#8220;matrix
+division&#8221;: <code>p = Q \ b</code>.</p>
+
+<p>All good matrix libraries (including <a href="http://eigen.tuxfamily.org">Eigen</a>) will
+implement this &#8220;solve&#8221; action. A very common approach is to compute a
+factorization of the matrix into a
+<a href="https://en.wikipedia.org/wiki/Triangular_matrix">lower triangular matrix</a>
+times it&#8217;s transpose:
+$$
+\Q = \L \L^\top.
+$$
+Finding this <span class="math">\(\L\)</span> matrix takes <span class="math">\(O(n³)\)</span> time in general.</p>
+
+<p>The action of solving against a triangular matrix is simple
+<a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution">forward-/back-substitution</a>
+and takes <span class="math">\(O(n²)\)</span> time. We can conceptually rewrite our system as
+<span class="math">\(\Q \p = \b\)</span> with <span class="math">\(\L \L^\top \p = \b\)</span>.</p>
+
+<p>A key insight of the Liu et al. paper is that our <span class="math">\(\Q\)</span> matrix is always same
+(regardless of the iterations in our algorithm above and even regardless of the
+time <span class="math">\(t\)</span> that we&#8217;re computing positions for). We can split our solve routine
+into two steps: precomputation done once when the mass-spring system is loaded
+in and fast substitution at run-time:</p>
+
+<pre><code>// Once Q is known
+L = precompute_factorization(Q)
+// ... each time step
+// ... ... each iteration
+p = back_substitution(transpose(L),forward_substitution(L,b))
+</code></pre>
+
+<h3 id="sparsematrices">Sparse Matrices</h3>
+
+<p>For small mass spring systems, <span class="math">\(O(n³)\)</span> at loading time and <span class="math">\(O(n²)\)</span> at runtime
+may be acceptable. But for even medium sized systems this will become
+intractable <span class="math">\((n=1000 → n³=1,000,000,000.)\)</span></p>
+
+<p>Fortunately, we can avoid this worst-case behavior by observing a special
+structure in our matrices. Let&#8217;s start with the mass matrix <span class="math">\(\M ∈ \R^{n×n}\)</span>. All
+of the values of this matrix are zero except the diagonal. Storing this as a
+general matrix we would be storing <span class="math">\(n²-n\)</span> zeros. Instead, we can acknowlede that
+this matrix is <a href="https://en.wikipedia.org/wiki/Sparse_matrix">sparse</a> and store
+only the non-zeros along the diagonal.</p>
+
+<p>Similarly, the matrix <span class="math">\(\A^{m×n}\)</span> has <span class="math">\(2m\)</span> non-zeros (a <span class="math">\(+1\)</span> and <span class="math">\(-1\)</span> per edge)
+and the other <span class="math">\(mn-2m\)</span> entries are zero. Furthermore, the result of the product <span class="math">\(\A^\top\A\)</span> and by
+extension <span class="math">\(\Q ∈ \R^{n×n}\)</span> will mostly contain zeros. The number of non-zeros is
+in fact <span class="math">\(O(m + n)\)</span>. Large mass-spring systems tend to have <span class="math">\(m=O(n)\)</span> edges, so we
+can happily think of the number of non-zeros as <span class="math">\(O(n)\)</span>.</p>
+
+<p>We&#8217;ve reduced the storage required from <span class="math">\(O(n²)\)</span> to <span class="math">\(O(n)\)</span>. What&#8217;s the catch?
+General (or &#8220;dense&#8221;) matrices can be easily mapped to memory linearly. For a an
+arbitrary sparse matrix, we need store additional information to know <em>where</em>
+each non-zero entry is. The most common general approach is to stored a sorted
+list of values in each column (or row) of the matrix. This is a rather awkward
+data-structure to manipulate directly. Similar to the pitfalls of <a href="https://en.wikipedia.org/wiki/Insertion_sort">bubble
+sort</a>, inserting values one at a
+time can be quite slow since we&#8217;d have to keep the lists sorted after each
+operation. </p>
+
+<p>Because of this most sparse matrix libraries require (or prefer) to insert all
+entries at once and presort non-zeros indices prefer creating the datastructure.
+Friendly sparse matrix libraries like Eigen, will let us create a list list of
+<span class="math">\((i,j,v)\)</span> triplets for each non-zero and then insert all values. </p>
+
+<p>So if our dense matrix code looked something like:</p>
+
+<pre><code>Afull = zero(m,n)
+for each pair i j
+  Afull(i,j) += v
+end
+</code></pre>
+
+<blockquote>
+<p>By convention we use <code>+=</code> instead of <code>=</code> to allow for repeated <span class="math">\((i,j)\)</span> pairs
+in the list. </p>
+</blockquote>
+
+<p>then we can replace this with </p>
+
+<pre><code>triplet_list = []
+for each pair i j
+  triplet_list.append( i, j, v)
+end
+Asparse = construct_from_triplets( triplet_list )
+</code></pre>
+
+<blockquote>
+<p><strong>Warning:</strong></p>
+
+<p>Do not attempt to set values of a sparse matrix directly. That is, <strong><em>do
+not</em></strong> write:</p>
+
+<pre><code>A_sparse(i,j) = v
+</code></pre>
+</blockquote>
+
+<p>Storing only the non-zero entries means we must rewrite all basic matrix
+operations including (matrix-vector product, matrix addition, matrix-matrix
+product, transposition, etc.). This is outside the scope of our assignment and
+we will use Eigen&#8217;s <code>SparseMatrix</code> class.</p>
+
+<p>Most important to our mass spring system is the <em>solve action</em> discussed above.
+Similar to the dense case, we can precompute a factorization and use
+substitution at runtime. For our sparse matrix, these steps will
+be <span class="math">\(O(n^{≈1.5})\)</span>, with substitution faster and nearly <span class="math">\(O(n)\)</span>.</p>
+
+<h3 id="pinnedvertices">Pinned Vertices</h3>
+
+<p>Subject to the external force of gravity in <span class="math">\(\f^\text{ext}\)</span> our spring networks
+will just accelerate downward off the screen.</p>
+
+<p>We can pin down vertices (e.g., those listed in <code>b</code>) at their intial positions,
+by requiring that their corresponding positions values <span class="math">\(\p_i\)</span> are always forced
+to be equal to their initial values <span class="math">\(\p^\text{rest}_b\)</span>:</p>
+
+<p>$$
+\p_i = \p^\text{rest}_i \ ∀ i \text{ in pinned vertices}.
+$$</p>
+
+<p>There are various ways we can introduce this simple linear equality constraint
+into the energy optimization above. For this assignment, we&#8217;ll use the
+easy-to-implement <a href="https://en.wikipedia.org/wiki/Penalty_method">penalty
+method</a>. We will add an additional
+quadratic energy term which is minimized when our pinning constraints are
+satisfied:</p>
+
+<p>$$
+\frac{w}{2} \sum\limits_{i \text{ in pinned vertices}} ‖\p_i - \p^\text{rest}_i ‖^2,
+$$</p>
+
+<p>where the <span class="math">\(w\)</span> should be set to some large value (e.g., <code>w=1e10</code>). We can write this in matrix form as:</p>
+
+<p>$$
+\frac{w}{2} \tr{(\C \p - \C \p^\text{rest})^\top(\C \p - \C \p^\text{rest})} = \\
+\frac{1}{2} \tr{\p^\top (w \C^\top \C) \p} - \tr{\p^\top \C^\top \p^\text{rest}} + \text{constant}
+$$</p>
+
+<p>where <span class="math">\(\C \in \R^{|\text{pinned}| × n}\)</span> has one row per pinned vertex with a
+<span class="math">\(+1\)</span> in the corresponding column.</p>
+
+<p>We can add these quadratic and linear coefficients to <span class="math">\(\Q\)</span> and <span class="math">\(\b\)</span> above correspondingly.</p>
+
+</body>
+</html>
