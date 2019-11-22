@@ -95,13 +95,17 @@ padding: 45px;
 </code></pre>
 </blockquote>
 
+<figure>
+<img src="images/flag.gif" alt="" />
+</figure>
+
 <h2 id="background">Background</h2>
 
 <h3 id="readchapter16.5offundamentalsofcomputergraphics4thedition.">Read Chapter 16.5 of <em>Fundamentals of Computer Graphics (4th Edition)</em>.</h3>
 
 <h3 id="readfastsimulationofmass-springsystems">Read <a href="http://graphics.berkeley.edu/papers/Liu-FSM-2013-11/Liu-FSM-2013-11.pdf">&#8220;Fast Simulation of Mass-Spring Systems&#8221; [Tiantian Liu et al. 2013]</a></h3>
 
-<h2 id="mass-springsystems">Mass-Spring Systems</h2>
+<h3 id="mass-springsystems">Mass-Spring Systems</h3>
 
 <p>In this assignment we&#8217;ll consider animating a deformable shape.</p>
 
@@ -399,7 +403,7 @@ in matrix form:</p>
 }
 \tr{\p^\top \f^\text{ext}} = \\
 \frac{1}{2} \tr{ \p^\top (k \A^\top \A + \frac{1}{∆t²}\M) \p }
-- \tr{\p^\top(k \A^\top \d + \M (2\p^t - \p^{t-∆t}) + \f^\text{ext})} + \text{ constants }.
+- \tr{\p^\top(k \A^\top \d + \frac{1}{∆t²}\M (2\p^t - \p^{t-∆t}) + \f^\text{ext})} + \text{ constants }.
 $$</p>
 
 <blockquote>
@@ -595,6 +599,78 @@ $$</p>
 <span class="math">\(+1\)</span> in the corresponding column.</p>
 
 <p>We can add these quadratic and linear coefficients to <span class="math">\(\Q\)</span> and <span class="math">\(\b\)</span> above correspondingly.</p>
+
+<h2 id="tasks">Tasks</h2>
+
+<h3 id="whitelist">White List</h3>
+
+<ul>
+<li><code>Eigen::Triplet</code></li>
+</ul>
+
+<h3 id="blacklist">Black List</h3>
+
+<ul>
+<li><code>igl::edge_lengths</code></li>
+<li><code>igl::diag</code></li>
+<li><code>igl::sparse</code></li>
+<li><code>igl::massmatrix</code></li>
+<li><code>igl::*</code></li>
+<li><code>.sparseView()</code></li>
+</ul>
+
+<p>Write your dense code first. This will be simpler to debug.</p>
+
+<h3 id="srcsigned_incidence_matrix_dense.cpp"><code>src/signed_incidence_matrix_dense.cpp</code></h3>
+
+<h3 id="srcfast_mass_springs_precomputation_dense.cpp"><code>src/fast_mass_springs_precomputation_dense.cpp</code></h3>
+
+<h3 id="srcfast_mass_springs_step_dense.cpp"><code>src/fast_mass_springs_step_dense.cpp</code></h3>
+
+<p>At this point you should be able to run on small examples.</p>
+
+<p>For example, running <code>./masssprings_dense ../data/single-spring-horizontal.json</code>
+should produce a swinging, bouncing spring:</p>
+
+<figure>
+<img src="images/single-spring-horizontal.gif" alt="" />
+</figure>
+
+<p>If the single spring example is not working, debug immediately before proceeding
+to examples with more than one spring.</p>
+
+<p>Running <code>./masssprings_dense ../data/horizontal-chain.json</code>
+will produce a hanging <a href="https://en.wikipedia.org/wiki/Catenary">catenary chain</a>:</p>
+
+<figure>
+<img src="images/horizontal-chain.gif" alt="" />
+</figure>
+
+<p>Running <code>./masssprings_dense ../data/net.json</code>
+will produce a hanging <a href="https://en.wikipedia.org/wiki/Catenary">catenary chain</a>:</p>
+
+<figure>
+<img src="images/net.gif" alt="" />
+</figure>
+
+<p>If you try to run <code>./masssprings_dense ../data/flag.json</code> you&#8217;ll end up waiting
+a while. </p>
+
+<p>Start your sparse implementations by copying-and-pasting your correct dense
+code. Remove any dense operations and construct all matrices using triplet lists.</p>
+
+<h3 id="srcsigned_incidence_matrix_sparse.cpp"><code>src/signed_incidence_matrix_sparse.cpp</code></h3>
+
+<h3 id="srcfast_mass_springs_precomputation_sparse.cpp"><code>src/fast_mass_springs_precomputation_sparse.cpp</code></h3>
+
+<h3 id="srcfast_mass_springs_step_sparse.cpp"><code>src/fast_mass_springs_step_sparse.cpp</code></h3>
+
+<p>Now you should be able to see more complex examples, such as running
+<code>./masssprings_sparse ../data/flag.json</code> or <code>./masssprings_sparse ../data/skirt.json</code>:</p>
+
+<figure>
+<img src="images/skirt.gif" alt="" />
+</figure>
 
 </body>
 </html>

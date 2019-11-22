@@ -58,6 +58,7 @@ int main(int argc, char * argv[])
   A,a  toggle animation 
   L,l  show/hide edges (springs) and verties (point masses)
   R,r  reset to rest configuration
+  W,w  toggle horizontal wind
 )";
 
   // Initial conditions

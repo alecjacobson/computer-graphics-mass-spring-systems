@@ -5,13 +5,15 @@
 >     git clone --recursive http://github.com/alecjacobson/computer-graphics-mass-spring.git
 >
 
+![](images/flag.gif)
+
 ## Background
 
 ### Read Chapter 16.5 of _Fundamentals of Computer Graphics (4th Edition)_.
 
 ### Read ["Fast Simulation of Mass-Spring Systems" [Tiantian Liu et al. 2013]](http://graphics.berkeley.edu/papers/Liu-FSM-2013-11/Liu-FSM-2013-11.pdf)
 
-## Mass-Spring Systems
+### Mass-Spring Systems
 
 In this assignment we'll consider animating a deformable shape.
 
@@ -499,3 +501,62 @@ $+1$ in the corresponding column.
 
 We can add these quadratic and linear coefficients to $\Q$ and $\b$ above correspondingly.
 
+## Tasks
+
+### White List
+
+- `Eigen::Triplet`
+
+### Black List
+
+- `igl::edge_lengths`
+- `igl::diag`
+- `igl::sparse`
+- `igl::massmatrix`
+- `igl::*`
+- `.sparseView()`
+
+Write your dense code first. This will be simpler to debug.
+
+### `src/signed_incidence_matrix_dense.cpp`
+
+### `src/fast_mass_springs_precomputation_dense.cpp`
+
+### `src/fast_mass_springs_step_dense.cpp`
+
+At this point you should be able to run on small examples.
+
+For example, running `./masssprings_dense ../data/single-spring-horizontal.json`
+should produce a swinging, bouncing spring:
+
+![](images/single-spring-horizontal.gif)
+
+If the single spring example is not working, debug immediately before proceeding
+to examples with more than one spring.
+
+Running `./masssprings_dense ../data/horizontal-chain.json`
+will produce a hanging [catenary chain](https://en.wikipedia.org/wiki/Catenary):
+
+![](images/horizontal-chain.gif)
+
+Running `./masssprings_dense ../data/net.json`
+will produce a hanging [catenary chain](https://en.wikipedia.org/wiki/Catenary):
+
+![](images/net.gif)
+
+If you try to run `./masssprings_dense ../data/flag.json` you'll end up waiting
+a while. 
+
+Start your sparse implementations by copying-and-pasting your correct dense
+code. Remove any dense operations and construct all matrices using triplet lists.
+
+### `src/signed_incidence_matrix_sparse.cpp`
+
+### `src/fast_mass_springs_precomputation_sparse.cpp`
+
+### `src/fast_mass_springs_step_sparse.cpp`
+
+Now you should be able to see more complex examples, such as running
+`./masssprings_sparse ../data/flag.json` or `./masssprings_sparse ../data/skirt.json`:
+
+![](images/skirt.gif)
