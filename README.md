@@ -2,7 +2,7 @@
 
 > **To get started:** Clone this repository using
 > 
->     git clone --recursive http://github.com/alecjacobson/computer-graphics-mass-spring.git
+>     git clone --recursive http://github.com/alecjacobson/computer-graphics-mass-spring-systems.git
 >
 
 ![](images/flag.gif)
