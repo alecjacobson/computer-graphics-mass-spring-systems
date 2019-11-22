@@ -5,7 +5,7 @@
 //
 // Inputs: 
 //   V  #V by 3 list of vertex positions
-//   E  #E by 3 list of edge indices into rows of V
+//   E  #E by 2 list of edge indices into rows of V
 //   k  spring stiffness
 //   m  #V list of masses 
 //   b  #b list of indices of fixed vertices as indices into rows of V
