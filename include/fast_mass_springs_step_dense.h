@@ -18,7 +18,7 @@
 //   Uprev  #V by 3 list of previous vertex positions (at time t-∆t)
 //   Ucur  #V by 3 list of current vertex positions (at time t)
 // Outputs:
-//   Unext #V by 3 list of previous vertex positions (at time t-∆t)
+//   Unext #V by 3 list of next vertex positions (at time t+∆t)
 void fast_mass_springs_step_dense(
   const Eigen::MatrixXd & V,
   const Eigen::MatrixXi & E,
