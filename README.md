@@ -338,14 +338,14 @@ Taking a derivative with respect to $\p$ and setting the expression to zero
 reveals the minimizer of this quadratic energy:
 
 $$
-\Q \p\^{t+∆t} = \b
+\Q \p = \b
 $$
 
 Since $\Q$ is a square invertible matrix we can _solve_ this system, which we
 often write as:
 
 $$
-\p\^{t+∆t} = \Q\^{-1} \b.
+\p = \Q\^{-1} \b.
 $$
 
 #### Solving as the _action_ of multiplying by a matrix's inverse
