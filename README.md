@@ -493,7 +493,7 @@ where the $w$ should be set to some large value (e.g., `w=1e10`). We can write t
 
 $$
 \frac{w}{2} \tr{(\C \p - \C \p\^\text{rest})^\top(\C \p - \C \p\^\text{rest})}  = \\\\
-\frac{1}{2} \tr{\p\^\top (w \C\^\top \C) \p} - \tr{\p^\top w\C^\top \p\^\text{rest}} + \text{constant}
+\frac{1}{2} \tr{\p\^\top (w \C\^\top \C) \p} - \tr{\p^\top w\C^\top \C \p\^\text{rest}} + \text{constant}
 $$
 
 where $\C \in \R^{|\text{pinned}| × n}$ has one row per pinned vertex with a
