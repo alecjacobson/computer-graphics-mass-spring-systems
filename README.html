@@ -248,17 +248,27 @@ satisfies <span class="math">\(\f = m \a\)</span>. The minimizer <span class="ma
 \p^{t+∆t} = \argmin_\p
 \underbrace{
 \left(\sum\limits_{ij} ½k( ‖\p_i-\p_j‖ - r_{ij})^2\right) -
-∆t^2 \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i + \p_i^{t-∆t}}{∆t²}\right)^2 \right) -
+\frac{∆t^2}{2} \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i + \p_i^{t-∆t}}{∆t²}\right)^2 \right) -
 \left(\sum\limits_i \p_i^\top \f^\text{ext}_i \right)
 }_{E(\p)}
 $$ </p>
 
 <p>Keen observers will identify that the first term is potential energy and the
-second term resembles <a href="https://en.wikipedia.org/wiki/Kinetic_energy">kinetic
+second term resembles¹ <a href="https://en.wikipedia.org/wiki/Kinetic_energy">kinetic
 energy</a>. Intuitively, we can see
 the first term as trying to return the spring to rest length (elasticity) and
 the second term as trying to keep masses <a href="https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion#Newton%27s_first_law">moving in the same
 direction</a>. </p>
+
+<blockquote>
+<p><strong>¹</strong> Kinetic energy is defined as <span class="math">\(\frac{1}{2}m ‖\mathbf{v}‖²\)</span> where
+<span class="math">\(\mathbf{v}∈\R³\)</span> is the <em>velocity</em> of the object. This is different from our
+term above: we have an extra <span class="math">\(∆t²\)</span> factor and acceleration <span class="math">\(\a\)</span> instead of
+velocity <span class="math">\(\mathbf{v}\)</span>. So, our term is <em>not</em> kinetic energy. It is, however,
+related (hence the resemblence), see <a href="https://en.wikipedia.org/wiki/Principle_of_least_action">Principle of least
+action</a> for more
+details (or take CSC 417 / Computer Animations :-).</p>
+</blockquote>
 
 <p>Because of the <span class="math">\(‖\p_i-\p_j‖ - r_{ij}\)</span> term, minimizing <span class="math">\(E\)</span> is a non-linear
 optimization problem. The standard approach would be to apply <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient
@@ -297,7 +307,7 @@ find the optimal solution by solving the <em>quadratic</em> optimization problem
 \p^{t+∆t} = \argmin_\p
 \underbrace{
 \left(\sum\limits_{ij} ½k‖(\p_i-\p_j) - \d_{ij}‖^2\right) -
-∆t^2 \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i + \p_i^{t-∆t}}{∆t²}\right)^2 \right) -
+\frac{∆t^2}{2} \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i + \p_i^{t-∆t}}{∆t²}\right)^2 \right) -
 \left(\sum\limits_i \p_i^\top \f^\text{ext}_i \right)
 }_{\tilde{E}(\p)}.
 $$ </p>
@@ -345,13 +355,13 @@ We can do the same for the <em>known</em> previous time steps&#8217; positions
 
 <p>We can then express the inertial term using matrices:
 $$
-∆t^2 \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i - \p_i^{t-∆t}}{∆t²}\right)^2 \right) = \\
-\frac{1}{∆t^2} \left(\sum\limits_i
-\left(\p_i - 2 \p^{t}_i - \p_i^{t-∆t}\right)^\top
+\frac{∆t^2}{2} \left(\sum\limits_i m_i \left(\frac{\p_i - 2 \p^{t}_i + \p_i^{t-∆t}}{∆t²}\right)^2 \right) = \\
+\frac{1}{2∆t^2} \left(\sum\limits_i
+\left(\p_i - 2 \p^{t}_i + \p_i^{t-∆t}\right)^\top
 m_i
-\left(\p_i - 2 \p^{t}_i - \p_i^{t-∆t}\right)
+\left(\p_i - 2 \p^{t}_i + \p_i^{t-∆t}\right)
 \right) = \\
-\frac{1}{∆t^2}
+\frac{1}{2∆t^2}
 \tr{
 \left(\p - 2\p^{t} + \p^{t-∆t}\right)^\top \M \left(\p - 2\p^{t} + \p^{t-∆t}\right)
 },

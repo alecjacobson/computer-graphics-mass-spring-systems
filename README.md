@@ -153,18 +153,26 @@ $$
 \p\^{t+∆t} = \argmin_\p
 \underbrace{
 \left(\sum\limits_{ij} ½k( ‖\p_i-\p_j‖ - r_{ij})\^2\right)  - 
-∆t\^2 \left(\sum\limits_i m_i \left(\frac{\p\_i - 2 \p\^{t}\_i + \p_i\^{t-∆t}}{∆t²}\right)\^2 \right) - 
+\frac{∆t\^2}{2} \left(\sum\limits_i m_i \left(\frac{\p\_i - 2 \p\^{t}\_i + \p_i\^{t-∆t}}{∆t²}\right)\^2 \right) - 
 \left(\sum\limits_i \p_i^\top \f^\text{ext}_i \right)
 }_{E(\p)}
 $$ 
 
 Keen observers will identify that the first term is potential energy and the
-second term resembles [kinetic
+second term resembles¹ [kinetic
 energy](https://en.wikipedia.org/wiki/Kinetic_energy). Intuitively, we can see
 the first term as trying to return the spring to rest length (elasticity) and
 the second term as trying to keep masses [moving in the same
 direction](https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion#Newton%27s_first_law). 
 
+> **¹** Kinetic energy is defined as $\frac{1}{2}m ‖\mathbf{v}‖²$ where
+> $\mathbf{v}∈\R³$ is the _velocity_ of the object. This is different from our
+> term above: we have an extra $∆t²$ factor and acceleration $\a$ instead of
+> velocity $\mathbf{v}$. So, our term is _not_ kinetic energy. It is, however,
+> related (hence the resemblence), see [Principle of least
+> action](https://en.wikipedia.org/wiki/Principle_of_least_action) for more
+> details (or take CSC 417 / Computer Animations :-).
+ 
 Because of the $‖\p_i-\p_j‖ - r_{ij}$ term, minimizing $E$ is a non-linear
 optimization problem. The standard approach would be to apply [gradient
 descent](https://en.wikipedia.org/wiki/Gradient_descent) (slow), [Gauss-Newton
@@ -201,7 +209,7 @@ $$
 \p\^{t+∆t} = \argmin_\p
 \underbrace{
 \left(\sum\limits_{ij} ½k‖(\p_i-\p_j) - \d_{ij}‖\^2\right)  - 
-∆t\^2 \left(\sum\limits_i m_i \left(\frac{\p\_i - 2 \p\^{t}\_i + \p_i\^{t-∆t}}{∆t²}\right)\^2 \right) -
+\frac{∆t\^2}{2} \left(\sum\limits_i m_i \left(\frac{\p\_i - 2 \p\^{t}\_i + \p_i\^{t-∆t}}{∆t²}\right)\^2 \right) -
 \left(\sum\limits_i \p_i^\top \f^\text{ext}_i \right)
 }_{\tilde{E}(\p)}.
 $$ 
@@ -247,13 +255,13 @@ $\p^{t},\p^{t-∆t}∈\R^{n×3}$.
 
 We can then express the inertial term using matrices:
 $$
-∆t\^2 \left(\sum\limits_i m_i \left(\frac{\p\_i - 2 \p\^{t}\_i - \p_i\^{t-∆t}}{∆t²}\right)\^2 \right) = \\\\
-\frac{1}{∆t\^2} \left(\sum\limits_i 
-\left(\p\_i - 2 \p\^{t}\_i - \p_i\^{t-∆t}\right)^\top
+\frac{∆t\^2}{2} \left(\sum\limits_i m_i \left(\frac{\p\_i - 2 \p\^{t}\_i + \p_i\^{t-∆t}}{∆t²}\right)\^2 \right) = \\\\
+\frac{1}{2∆t\^2} \left(\sum\limits_i 
+\left(\p\_i - 2 \p\^{t}\_i + \p_i\^{t-∆t}\right)^\top
 m_i
-\left(\p\_i - 2 \p\^{t}\_i - \p_i\^{t-∆t}\right)
+\left(\p\_i - 2 \p\^{t}\_i + \p_i\^{t-∆t}\right)
 \right) = \\\\
-\frac{1}{∆t\^2} 
+\frac{1}{2∆t\^2} 
 \tr{
 \left(\p - 2\p\^{t} + \p\^{t-∆t}\right)^\top \M \left(\p - 2\p\^{t} + \p\^{t-∆t}\right)
 },
