@@ -112,8 +112,8 @@ $$
 \ddot{\p}\^t\_i = 
 \frac{∂²\p\_i(t)}{∂t²} = 
 \frac{\dot{\p}\^{t+∆t}\_i - \dot{\p}\^{t}\_i}{∆t} =
-\frac{\p\^{t+∆t}\_i - \p\^{t}\_i}{∆t}
--\frac{\p\^t\_i - \p\^{t-∆t}\_i}{∆t}=
+\frac{\frac{\p\^{t+∆t}\_i - \p\^{t}\_i}{∆t}
+-\frac{\p\^t\_i - \p\^{t-∆t}\_i}{∆t}}{∆t}=
 \frac{\p\^{t+∆t}\_i - 2 \p\^{t}\_i + \p\^{t-∆t}}{∆t²}.
 $$
 
