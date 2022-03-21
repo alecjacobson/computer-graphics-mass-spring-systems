@@ -11,7 +11,7 @@
 
 ### Read Chapter 16.5 of _Fundamentals of Computer Graphics (4th Edition)_.
 
-### Read ["Fast Simulation of Mass-Spring Systems" [Tiantian Liu et al. 2013]](http://graphics.berkeley.edu/papers/Liu-FSM-2013-11/Liu-FSM-2013-11.pdf)
+### Read ["Fast Simulation of Mass-Spring Systems" [Tiantian Liu et al. 2013]](https://www.cs.utah.edu/~ladislav/liu13fast/liu13fast.pdf)
 
 ### Mass-Spring Systems
 
